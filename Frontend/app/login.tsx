@@ -1,26 +1,33 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import SentraScreen from "@/components/SentraScreen";
+import SentraLogo from "@/components/SentraLogo";
 
-export default function LoginScreen() {
+export default function Login() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Logga in</Text>
-      {/* Lägg till inloggningsformulär här */}
-    </View>
+    <SentraScreen>
+      <View style={styles.content}>
+        <SentraLogo size="medium" />
+
+        <Text>Logga in</Text>
+
+        {/* resten av login-formuläret */}
+      </View>
+    </SentraScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-    padding: 24,
-    backgroundColor: "#fff",
+    paddingTop: 10,
   },
+
   title: {
+    color: "#FFFFFF",
     fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 16,
+    fontWeight: "700",
+    marginTop: 20,
   },
 });
