@@ -4,9 +4,9 @@ import {
   Text,
   StyleSheet,
   Image,
-  Dimensions,
   ImageBackground,
   Animated,
+  useWindowDimensions,
 } from "react-native";
 import { router } from "expo-router";
 import SentraButton from "@/components/SentraButton";
@@ -35,6 +35,7 @@ const slides = [
 export default function InfoSlides() {
   const [current, setCurrent] = useState(0);
   const fadeAnim = useRef(new Animated.Value(1)).current;
+  const { width, height } = useWindowDimensions();
 
   const nextSlide = () => {
     if (current === slides.length - 1) {
@@ -63,7 +64,7 @@ export default function InfoSlides() {
   return (
     <ImageBackground
       source={require("@/assets/images/Background.png")}
-      style={styles.background}
+      style={[styles.background, { width, height }]}
       resizeMode="cover"
     >
       <View style={styles.overlay}>
@@ -72,7 +73,9 @@ export default function InfoSlides() {
 
           <Text style={styles.title}>{slides[current].title}</Text>
 
-          <Text style={styles.description}>{slides[current].description}</Text>
+          <Text style={[styles.description, { maxWidth: width - 72 }]}>
+            {slides[current].description}
+          </Text>
         </Animated.View>
 
         <View style={styles.bottomContent}>
@@ -96,19 +99,21 @@ export default function InfoSlides() {
   );
 }
 
-const { width } = Dimensions.get("window");
-
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    overflow: "hidden",
   },
 
   overlay: {
     flex: 1,
+    width: "100%",
+    height: "100%",
     backgroundColor: "rgba(0, 10, 20, 0.35)",
     paddingHorizontal: 28,
     paddingTop: 90,
     paddingBottom: 95,
+    overflow: "hidden",
   },
 
   content: {
@@ -130,6 +135,7 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     marginBottom: 18,
     textAlign: "center",
+    width: "100%",
     textShadowColor: "rgba(0, 230, 246, 0.75)",
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 16,
@@ -140,7 +146,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     lineHeight: 24,
     textAlign: "center",
-    maxWidth: width - 72,
+    width: "100%",
   },
 
   bottomContent: {

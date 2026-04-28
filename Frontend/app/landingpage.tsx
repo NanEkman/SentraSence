@@ -5,16 +5,19 @@ import {
   StyleSheet,
   Pressable,
   ImageBackground,
+  useWindowDimensions,
 } from "react-native";
 import { Image } from "expo-image";
 import { router } from "expo-router";
 import SentraButton from "@/components/SentraButton";
 
 export default function LandingPage() {
+  const { width, height } = useWindowDimensions();
+
   return (
     <ImageBackground
       source={require("@/assets/images/Background.png")}
-      style={styles.background}
+      style={[styles.background, { width, height }]}
       resizeMode="cover"
     >
       <View style={styles.overlay}>
@@ -53,15 +56,19 @@ export default function LandingPage() {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    overflow: "hidden",
   },
 
   overlay: {
     flex: 1,
+    width: "100%",
+    height: "100%",
     backgroundColor: "rgba(0, 10, 20, 0.20)",
     paddingHorizontal: 28,
     paddingTop: 78,
     paddingBottom: 48,
     justifyContent: "space-between",
+    overflow: "hidden",
   },
 
   content: {
@@ -81,6 +88,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     textAlign: "center",
     marginBottom: 12,
+    width: "100%",
   },
 
   subtitle: {
@@ -89,6 +97,7 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     textAlign: "center",
     maxWidth: 280,
+    width: "100%",
     marginBottom: 64,
   },
 
