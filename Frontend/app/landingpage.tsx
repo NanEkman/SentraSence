@@ -4,82 +4,47 @@ import {
   Text,
   StyleSheet,
   Pressable,
-  ImageBackground,
-  useWindowDimensions,
 } from "react-native";
-import { Image } from "expo-image";
 import { router } from "expo-router";
+import SentraScreen from "@/components/SentraScreen";
+import SentraLogo from "@/components/SentraLogo";
 import SentraButton from "@/components/SentraButton";
 
 export default function LandingPage() {
-  const { width, height } = useWindowDimensions();
-
   return (
-    <ImageBackground
-      source={require("@/assets/images/Background.png")}
-      style={[styles.background, { width, height }]}
-      resizeMode="cover"
-    >
-      <View style={styles.overlay}>
-        <View style={styles.content}>
-          <Image
-            source={require("@/assets/images/logga.png")}
-            style={styles.logo}
-            contentFit="contain"
-          />
+    <SentraScreen>
+      <View style={styles.content}>
+        <SentraLogo size="large" />
 
-          <Text style={styles.title}>Din trygghetsapp vid nödsituationer</Text>
+        <Text style={styles.title}>Din trygghetsapp vid nödsituationer</Text>
 
-          <Text style={styles.subtitle}>
-            Snabb, säker och AI-driven hjälp när du behöver det som mest.
-          </Text>
+        <Text style={styles.subtitle}>
+          Snabb, säker och AI-driven hjälp när du behöver det som mest.
+        </Text>
 
-          <SentraButton
-            title="Kom igång"
-            onPress={() => router.push("/infoslides")}
-            style={styles.button}
-          />
-        </View>
-
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Har du redan ett konto? </Text>
-
-          <Pressable onPress={() => router.push("/login")}>
-            <Text style={styles.loginText}>Logga in</Text>
-          </Pressable>
-        </View>
+        <SentraButton
+          title="Kom igång"
+          onPress={() => router.push("/infoslides")}
+          style={styles.button}
+        />
       </View>
-    </ImageBackground>
+
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>Har du redan ett konto? </Text>
+
+        <Pressable onPress={() => router.push("/login")}>
+          <Text style={styles.loginText}>Logga in</Text>
+        </Pressable>
+      </View>
+    </SentraScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    overflow: "hidden",
-  },
-
-  overlay: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(0, 10, 20, 0.20)",
-    paddingHorizontal: 28,
-    paddingTop: 78,
-    paddingBottom: 48,
-    justifyContent: "space-between",
-    overflow: "hidden",
-  },
-
   content: {
+    flex: 1,
     alignItems: "center",
-    marginTop: 18,
-  },
-
-  logo: {
-    width: 235,
-    height: 170,
-    marginBottom: 34,
+    paddingTop: 10,
   },
 
   title: {

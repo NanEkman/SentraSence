@@ -7,7 +7,7 @@ export default function Login() {
   return (
     <SentraScreen>
       <View style={styles.content}>
-        <SentraLogo size="medium" />
+        <SentraLogo size="large" />
 
         <Text>Logga in</Text>
 
