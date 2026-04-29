@@ -53,28 +53,29 @@ export default function InfoSlides() {
 
   return (
     <SentraScreen>
-      <Animated.View style={[styles.content, { opacity: fadeAnim }]}>
-        <SentraLogo size="large" />
+      <View style={styles.page}>
+        <Animated.View style={[styles.content, { opacity: fadeAnim }]}>
+          <SentraLogo size="large" />
 
-        <Text style={styles.title}>{slides[current].title}</Text>
+          <Text style={styles.title}>{slides[current].title}</Text>
 
-        <Text style={styles.description}>{slides[current].description}</Text>
-      </Animated.View>
+          <Text style={styles.description}>{slides[current].description}</Text>
+        </Animated.View>
 
-      <View style={styles.bottomContent}>
-        <SentraButton
-          title={current < slides.length - 1 ? "Nästa" : "Skapa konto"}
-          onPress={nextSlide}
-          style={styles.slideButton}
-        />
+        <View style={styles.bottomContent}>
+          <SentraButton
+            title={current < slides.length - 1 ? "Nästa" : "Skapa konto"}
+            onPress={nextSlide}
+          />
 
-        <View style={styles.dots}>
-          {slides.map((_, i) => (
-            <View
-              key={i}
-              style={[styles.dot, current === i && styles.activeDot]}
-            />
-          ))}
+          <View style={styles.dots}>
+            {slides.map((_, i) => (
+              <View
+                key={i}
+                style={[styles.dot, current === i && styles.activeDot]}
+              />
+            ))}
+          </View>
         </View>
       </View>
     </SentraScreen>
@@ -82,61 +83,61 @@ export default function InfoSlides() {
 }
 
 const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    width: "100%",
+    alignItems: "center",
+  },
+
   content: {
     width: "100%",
     alignItems: "center",
   },
 
   title: {
-    fontSize: 24,
-    color: "#00E6F6",
-    fontWeight: "900",
-    marginBottom: 18,
+    color: "#FFFFFF",
+    fontSize: 18,
+    fontWeight: "800",
     textAlign: "center",
-    width: "100%",
-    textShadowColor: "rgba(0, 230, 246, 0.75)",
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 16,
+    marginBottom: 14,
   },
 
   description: {
-    fontSize: 16,
-    color: "#FFFFFF",
-    lineHeight: 24,
+    color: "#DDEAF0",
+    fontSize: 13,
+    lineHeight: 20,
     textAlign: "center",
-    width: "100%",
-    maxWidth: 320,
+    maxWidth: 300,
   },
 
   bottomContent: {
+    marginTop: 20,
     alignItems: "center",
-  },
-
-  slideButton: {
-    marginBottom: 30,
+    width: "100%",
   },
 
   dots: {
     flexDirection: "row",
     alignItems: "center",
     gap: 10,
+    marginTop: 24,
   },
 
   dot: {
-    width: 9,
-    height: 9,
-    borderRadius: 5,
-    backgroundColor: "rgba(255,255,255,0.45)",
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: "rgba(255,255,255,0.4)",
   },
 
   activeDot: {
-    width: 11,
-    height: 11,
-    borderRadius: 6,
+    width: 10,
+    height: 10,
+    borderRadius: 5,
     backgroundColor: "#00E6F6",
     shadowColor: "#00E6F6",
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.9,
+    shadowOpacity: 0.8,
     shadowRadius: 8,
     elevation: 8,
   },

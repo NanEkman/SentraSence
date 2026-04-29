@@ -30,6 +30,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 216, 230, 0.12)",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 26,
+    marginBottom: 12,
 
     shadowColor: "#00D8E6",
     shadowOffset: { width: 0, height: 0 },

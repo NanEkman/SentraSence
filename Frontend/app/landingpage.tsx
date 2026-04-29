@@ -20,7 +20,6 @@ export default function LandingPage() {
         <SentraButton
           title="Kom igång"
           onPress={() => router.push("/infoslides")}
-          style={styles.button}
         />
       </View>
 
@@ -55,11 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 20,
     textAlign: "center",
-    marginBottom: 64,
-  },
-
-  button: {
-    maxWidth: 240,
+    marginBottom: 12,
   },
 
   footer: {

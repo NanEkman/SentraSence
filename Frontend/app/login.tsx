@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from "react-native";
 import SentraScreen from "@/components/SentraScreen";
 import SentraLogo from "@/components/SentraLogo";
 import SentraInput from "@/components/SentraInput";
+import SentraButton from "@/components/SentraButton";
+import { router } from "expo-router";
 
 export default function Login() {
   return (
@@ -32,6 +34,11 @@ export default function Login() {
             style={styles.inputSpacing}
           />
         </View>
+
+          <SentraButton
+            title="Logga in"
+            onPress={() => router.push("/")}
+          />
       </View>
     </SentraScreen>
   );
