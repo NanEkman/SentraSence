@@ -83,9 +83,8 @@ export default function InfoSlides() {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    width: "100%",
     alignItems: "center",
-    justifyContent: "center",
   },
 
   title: {

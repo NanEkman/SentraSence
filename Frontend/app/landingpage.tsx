@@ -37,9 +37,8 @@ export default function LandingPage() {
 
 const styles = StyleSheet.create({
   content: {
-    flex: 1,
+    width: "100%",
     alignItems: "center",
-    paddingTop: 10,
   },
 
   title: {

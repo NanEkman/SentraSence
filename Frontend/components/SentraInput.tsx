@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TextInputProps,
   ViewStyle,
+  Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -16,12 +17,22 @@ type Props = TextInputProps & {
 export default function SentraInput({ icon, style, ...props }: Props) {
   return (
     <View style={[styles.container, style]}>
-      {icon && <Ionicons name={icon} size={18} color="#A7C7D1" />}
+      {icon && (
+        <View style={styles.iconBox}>
+          <Ionicons name={icon} size={14} color="#9CC6CF" />
+        </View>
+      )}
 
       <TextInput
         {...props}
-        placeholderTextColor="#8FA7B0"
-        style={styles.input}
+        placeholderTextColor="#7F9CA7"
+        selectionColor="#00D8E6"
+        cursorColor="#00D8E6"
+        underlineColorAndroid="transparent"
+        autoCorrect={false}
+        autoComplete="off"
+        textContentType="none"
+        style={[styles.input, Platform.OS === "web" && styles.webInput]}
       />
     </View>
   );
@@ -30,29 +41,55 @@ export default function SentraInput({ icon, style, ...props }: Props) {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 44,
+    height: 40, 
     borderRadius: 18,
-    paddingHorizontal: 14,
+    paddingHorizontal: 0, 
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
 
-    backgroundColor: "rgba(0, 18, 30, 0.72)",
+    backgroundColor: "rgba(18, 34, 45, 0.55)", 
     borderWidth: 1,
-    borderColor: "rgba(0, 216, 230, 0.22)",
+    borderColor: "rgba(90, 220, 235, 0.35)", 
 
     shadowColor: "#00D8E6",
-    shadowOpacity: 0.35,
-    shadowRadius: 10,
+    shadowOpacity: 0.12, 
+    shadowRadius: 6,
     shadowOffset: { width: 0, height: 0 },
 
-    elevation: 5,
+    elevation: 3,
+    overflow: "hidden",
   },
 
   input: {
     flex: 1,
-    color: "#FFFFFF",
-    fontSize: 13,
-    paddingVertical: 0,
+    height: "100%",
+    color: "#DDEAF0",
+    fontSize: 12,
+    padding: 0,
+    margin: 0,
+    paddingLeft: 10, 
+    borderWidth: 0,
+    backgroundColor: "transparent",
+    includeFontPadding: false,
+    textAlignVertical: "center",
   },
+
+  iconBox: {
+    width: 34,
+    height: "100%",
+    backgroundColor: "rgba(3, 14, 20, 0.55)",
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopLeftRadius: 18,
+    borderBottomLeftRadius: 18,
+  },
+
+  webInput: {
+    outlineStyle: "none",
+    boxShadow: "0 0 0 1000px rgba(18, 34, 45, 0.55) inset",
+    WebkitBoxShadow: "0 0 0 1000px rgba(18, 34, 45, 0.55) inset",
+    WebkitTextFillColor: "#DDEAF0",
+    caretColor: "#00D8E6",
+    transition: "background-color 9999s ease-in-out 0s",
+  } as any,
 });
