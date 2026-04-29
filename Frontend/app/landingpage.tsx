@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-} from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import { router } from "expo-router";
 import SentraScreen from "@/components/SentraScreen";
 import SentraLogo from "@/components/SentraLogo";
@@ -53,7 +48,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     textAlign: "center",
     marginBottom: 12,
-    width: "100%",
+    alignSelf: "stretch",
   },
 
   subtitle: {
@@ -61,8 +56,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 20,
     textAlign: "center",
-    maxWidth: 280,
-    width: "100%",
     marginBottom: 64,
   },
 
@@ -79,11 +72,15 @@ const styles = StyleSheet.create({
   footerText: {
     color: "#AAB8C0",
     fontSize: 12,
+    textAlign: "center",
+    alignSelf: "center",
   },
 
   loginText: {
     color: "#00D8E6",
     fontSize: 12,
     fontWeight: "800",
+    textAlign: "center",
+    alignSelf: "center",
   },
 });

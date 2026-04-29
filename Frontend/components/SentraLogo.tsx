@@ -8,10 +8,11 @@ type Props = {
 export default function SentraLogo({ size = "medium" }: Props) {
   return (
     <Image
-      source={require("@/assets/images/logga.png")}
+      source={require("@/assets/images/SentraSenseLogo.png")}
       style={[
         styles.logo,
         size === "small" && styles.small,
+        size === "medium" && styles.medium,
         size === "large" && styles.large,
       ]}
       resizeMode="contain"
@@ -30,8 +31,13 @@ const styles = StyleSheet.create({
     height: 130,
   },
 
+  medium: {
+    width: 230,
+    height: 160,
+  },  
+
   large: {
-    width: 270,
-    height: 190,
+    width: 460,
+    height: 320,
   },
 });
