@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import SentraScreen from "@/components/SentraScreen";
 import SentraLogo from "@/components/SentraLogo";
 import SentraInput from "@/components/SentraInput";
 import SentraButton from "@/components/SentraButton";
 import { router } from "expo-router";
+import SentraCheckbox from "@/components/SentraCheckbox";
 
 export default function Login() {
+  const [rememberMe, setRememberMe] = useState(true);
+
   return (
     <SentraScreen>
       <View style={styles.content}>
@@ -34,6 +37,12 @@ export default function Login() {
             style={styles.inputSpacing}
           />
         </View>
+
+        <SentraCheckbox
+          label="Kom ihåg mig"
+          checked={rememberMe}
+          onToggle={() => setRememberMe(!rememberMe)}
+        />
 
         <Pressable
           style={styles.forgotPasswordWrapper}
